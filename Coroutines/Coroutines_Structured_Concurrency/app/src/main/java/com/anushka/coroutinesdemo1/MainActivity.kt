@@ -6,6 +6,7 @@ import android.util.Log
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
@@ -17,13 +18,14 @@ class MainActivity : AppCompatActivity() {
 
         btnCount.setOnClickListener {
             tvCount.text = count++.toString()
-        }
 
+        }
         btnDownloadUserData.setOnClickListener {
 
             CoroutineScope(Dispatchers.Main).launch {
-                tvUserMessage.text = UserDataManager().getTotalUserCount().toString()
+               tvUserMessage.text = UserDataManager().getTotalUserCount().toString()
             }
+
         }
     }
 
