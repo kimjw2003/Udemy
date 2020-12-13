@@ -1,4 +1,4 @@
-package com.anushka.viewmodelscopedemo
+package com.example.coroutines_viewmodelscope
 
 import org.junit.Test
 
