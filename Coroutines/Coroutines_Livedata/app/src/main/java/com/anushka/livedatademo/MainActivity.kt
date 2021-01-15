@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity() {
 
         mainActivityViewModel = ViewModelProvider(this).get(MainActivityViewModel::class.java)
 
-        mainActivityViewModel.getUsers()
+        //mainActivityViewModel.getUsers()
         mainActivityViewModel.users.observe(this, Observer { myUsers ->
             myUsers.forEach {
                 Log.i("MyTag","name is ${it.name}")
