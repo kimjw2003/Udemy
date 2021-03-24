@@ -18,5 +18,6 @@ interface SubscriberDAO {
     suspend fun deleteAll()
 
     @Query("SELECT * FROM subscriber_data_table")
+
     fun getAllSubscribers():LiveData<List<Subscriber>>
 }
