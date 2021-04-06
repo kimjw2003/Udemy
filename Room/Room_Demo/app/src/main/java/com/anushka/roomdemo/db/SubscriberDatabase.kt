@@ -17,8 +17,9 @@ abstract class SubscriberDatabase : RoomDatabase() {
                         var instance = INSTANCE
                         if(instance == null){
                             instance = Room.databaseBuilder(
-                                context.applicationContext, SubscriberDatabase::class.java, "subscriber_data_database"
-                            ).build()
+                                context.applicationContext,
+                                SubscriberDatabase::class.java, "subscriber_data_database")
+                                .build()
                         }
                         return instance
                     }
