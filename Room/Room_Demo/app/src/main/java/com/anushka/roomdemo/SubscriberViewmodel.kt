@@ -2,6 +2,7 @@ package com.anushka.roomdemo
 
 import androidx.databinding.Bindable
 import androidx.databinding.Observable
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -23,6 +24,11 @@ class SubscriberViewmodel(private val repositoty: SubscriberRepositoty) : ViewMo
     val saveOrUpdateButtonText = MutableLiveData<String>()
     @Bindable
     val clearAllorDeleteButtonText = MutableLiveData<String>()
+
+    private val statusMessage = MutableLiveData<Event<String>>()
+
+    val message : LiveData<Event<String>>
+        get() = statusMessage
 
     init{
         saveOrUpdateButtonText.value = "Save"
@@ -54,6 +60,7 @@ class SubscriberViewmodel(private val repositoty: SubscriberRepositoty) : ViewMo
 
     fun insert(subscriber: Subscriber) = viewModelScope.launch {
             repositoty.insert(subscriber)
+        statusMessage.value = Event("Subscriber Inserted Successfully")
     }
 
     fun update(subscriber: Subscriber) = viewModelScope.launch {
@@ -63,6 +70,8 @@ class SubscriberViewmodel(private val repositoty: SubscriberRepositoty) : ViewMo
         isUpdateOrDelete = false
         saveOrUpdateButtonText.value = "Save"
         clearAllorDeleteButtonText.value = "Clear All"
+
+        statusMessage.value = Event("Subscriber Updated Successfully")
     }
 
     fun delete(subscriber: Subscriber) = viewModelScope.launch {
@@ -72,10 +81,13 @@ class SubscriberViewmodel(private val repositoty: SubscriberRepositoty) : ViewMo
         isUpdateOrDelete = false
         saveOrUpdateButtonText.value = "Save"
         clearAllorDeleteButtonText.value = "Clear All"
+
+        statusMessage.value = Event("Subscriber Deleted Successfully")
     }
 
     fun clearAll() = viewModelScope.launch {
         repositoty.deleteAll()
+        statusMessage.value = Event("All Subscriber Deleted Successfully")
     }
 
     fun initUpdateAndDelete(subscriber: Subscriber){
