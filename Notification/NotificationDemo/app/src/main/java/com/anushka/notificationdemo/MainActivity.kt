@@ -14,12 +14,12 @@ import kotlinx.android.synthetic.main.activity_main.*
 class MainActivity : AppCompatActivity() {
 
     private val channelId = "com.anushka.notificationdemo.channel1"
-    private var notifcationManager : NotificationManager? = null
+    private var notificationManager : NotificationManager? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        notifcationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         createNotificationChannel(channelId, "DemoChannel", "this is a demo")
 
         button.setOnClickListener {
@@ -40,7 +40,7 @@ class MainActivity : AppCompatActivity() {
             .setPriority(NotificationCompat.PRIORITY_HIGH)
             .setContentIntent(pendingIntent)
             .build()
-        notifcationManager?.notify(notificationId, notification)
+        notificationManager?.notify(notificationId, notification)
     }
 
     private fun createNotificationChannel(id : String, name : String, channelDescription : String){
@@ -49,7 +49,7 @@ class MainActivity : AppCompatActivity() {
             val channel = NotificationChannel(id, name, importance).apply {
                 description = channelDescription
             }
-            notifcationManager?.createNotificationChannel(channel)
+            notificationManager?.createNotificationChannel(channel)
         }
     }
 
