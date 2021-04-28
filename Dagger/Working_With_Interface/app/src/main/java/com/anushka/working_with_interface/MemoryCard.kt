@@ -1,7 +1,6 @@
-package com.anushka.didemo
+package com.anushka.working_with_interface
 
 import android.util.Log
-import javax.inject.Inject
 
 class MemoryCard {
     init {

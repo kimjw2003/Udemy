@@ -1,4 +1,4 @@
-package com.anushka.didemo
+package com.anushka.working_with_interface
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
