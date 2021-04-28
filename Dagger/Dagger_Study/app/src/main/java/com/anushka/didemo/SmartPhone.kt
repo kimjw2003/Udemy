@@ -1,8 +1,9 @@
 package com.anushka.didemo
 
 import android.util.Log
+import javax.inject.Inject
 
-class SmartPhone(val battery: Battery, val simCard: SIMCard, val memoryCard: MemoryCard) {
+class SmartPhone @Inject constructor(val battery: Battery, val simCard: SIMCard, val memoryCard: MemoryCard) {
 
     init {
         battery.getPower()
