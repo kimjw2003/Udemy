@@ -1,2 +1,2 @@
-rootProject.name='DIDemo'
+rootProject.name='Dagger_Study'
 include ':app'
