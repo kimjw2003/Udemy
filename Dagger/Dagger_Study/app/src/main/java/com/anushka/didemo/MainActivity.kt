@@ -10,8 +10,13 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
 
-        val smartPhone = SmartPhone(Battery(), SIMCard(ServiceProvider()), MemoryCard())
-        smartPhone.makeACallWithRecording()
+        val smartPhone = SmartPhone(
+            Battery(),
+            SIMCard(ServiceProvider()),
+            MemoryCard()
+        )
+            .makeACallWithRecording()
+
 
     }
 }
